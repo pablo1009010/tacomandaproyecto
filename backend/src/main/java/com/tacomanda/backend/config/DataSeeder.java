@@ -7,15 +7,7 @@ import com.tacomanda.backend.repository.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-/**
- * Se ejecuta una sola vez al arrancar el backend. Si la tabla empleados
- * está vacía, crea una cuenta real de cada subclase. El constructor de
- * PersonaTacomanda ya se encarga de hashear la contraseña con BCrypt.
- *
- *   no_control 1 -> admin  / contraseña admin123  / pin 1111
- *   no_control 2 -> mesero / contraseña mesero123 / pin 2222
- *   no_control 3 -> cajero / contraseña cajero123 / pin 3333
- */
+
 @Component
 public class DataSeeder implements CommandLineRunner {
 
