@@ -45,7 +45,7 @@ public class AuthController {
             return ResponseEntity.status(401).body(Map.of("error", "Número de control o contraseña incorrectos"));
         }
 
-        // Otro punto polimórfico: permisos() responde distinto según la subclase real.
+        
         String permisos = persona.permisos();
 
         return ResponseEntity.ok(new LoginResponse(persona, permisos));
