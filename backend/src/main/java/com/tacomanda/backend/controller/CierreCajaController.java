@@ -35,7 +35,7 @@ public class CierreCajaController {
         encuesta.setNoControl(request.getNoControl());
         encuesta.setTotalSistema(request.getTotalSistema());
         encuesta.setTotalContado(request.getTotalContado());
-        // La diferencia se calcula en el backend, nunca se confía en lo que mande el frontend.
+        
         encuesta.setDiferencia(request.getTotalContado().subtract(request.getTotalSistema()));
         encuesta.setSatisfaccionTurno(request.getSatisfaccionTurno());
         encuesta.setHuboIncidencias(request.isHuboIncidencias());
