@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 public class CobroRequest {
 
     @NotBlank(message = "Falta el tipo de pago")
-    private String tipoPago; // efectivo | tarjeta | transferencia
+    private String tipoPago; 
 
     @NotBlank(message = "Falta el tipo de pedido")
-    private String tipoPedido; // comer_aqui | para_llevar
+    private String tipoPedido; 
 
     @NotNull(message = "Falta el monto recibido")
     @PositiveOrZero
