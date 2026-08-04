@@ -24,8 +24,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
 
-        // Manejo de errores: el número de control debe ser numérico
-        // (viene como texto desde el formulario de Electron).
+       
         Integer noControl;
         try {
             noControl = Integer.parseInt(request.getNoControl().trim());
@@ -41,8 +40,7 @@ public class AuthController {
 
         PersonaTacomanda persona = encontrado.get();
 
-        // Polimorfismo real: cada subclase (Administrador/Cajero/Mesero) valida
-        // su propia contraseña a través de la interfaz Autenticable.
+        
         if (!persona.verificarPassword(request.getContrasena())) {
             return ResponseEntity.status(401).body(Map.of("error", "Número de control o contraseña incorrectos"));
         }
