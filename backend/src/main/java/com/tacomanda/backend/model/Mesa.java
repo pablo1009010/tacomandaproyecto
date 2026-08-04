@@ -14,7 +14,7 @@ public class Mesa {
     private Integer numero;
 
     @Column(nullable = false, length = 20)
-    private String estado = "libre"; // libre | ocupada | reservada
+    private String estado = "libre"; 
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
