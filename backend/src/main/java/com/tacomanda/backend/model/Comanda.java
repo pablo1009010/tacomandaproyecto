@@ -19,13 +19,13 @@ public class Comanda {
     private Mesa mesa;
 
     @Column(name = "no_control", nullable = false)
-    private Integer noControl; // empleado (mesero) que abrió la comanda
+    private Integer noControl; 
 
     @Column(nullable = false)
     private LocalDateTime fecha = LocalDateTime.now();
 
     @Column(nullable = false, length = 20)
-    private String estado = "abierta"; // abierta | cerrada | cancelada
+    private String estado = "abierta"; 
 
     @OneToMany(mappedBy = "comanda", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleComanda> detalles = new ArrayList<>();
