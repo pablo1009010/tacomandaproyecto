@@ -5,10 +5,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-/**
- * Registro del cierre de caja: cuánto calculó el sistema, cuánto se
- * contó en físico, y una mini-encuesta de cómo estuvo el turno.
- */
+
 @Entity
 @Table(name = "encuestas_cierre")
 public class EncuestaCierre {
@@ -34,7 +31,7 @@ public class EncuestaCierre {
     private BigDecimal diferencia;
 
     @Column(name = "satisfaccion_turno", nullable = false, length = 20)
-    private String satisfaccionTurno; // muy_malo | malo | regular | bueno | muy_bueno
+    private String satisfaccionTurno; 
 
     @Column(name = "hubo_incidencias", nullable = false)
     private boolean huboIncidencias;
