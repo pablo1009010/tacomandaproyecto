@@ -15,7 +15,7 @@ public class DetalleComanda {
 
     @ManyToOne
     @JoinColumn(name = "id_comanda", nullable = false)
-    @JsonIgnore // evita el ciclo infinito Comanda -> detalles -> comanda -> ...
+    @JsonIgnore 
     private Comanda comanda;
 
     @ManyToOne
