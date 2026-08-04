@@ -20,7 +20,7 @@ public class DataSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if (usuarioRepository.count() > 0) {
-            return; // ya hay empleados, no duplicar
+            return; 
         }
 
         usuarioRepository.save(new Administrador("Administrador", "5555550001", "1111", "admin123"));
