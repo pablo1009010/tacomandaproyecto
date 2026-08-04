@@ -53,7 +53,7 @@ public class PlatilloController {
             repositorio.deleteById(id);
             return ResponseEntity.ok(Map.of("eliminado", true));
         } catch (Exception e) {
-            // Si el platillo ya está referenciado en detalle_comanda, MySQL rechaza el borrado (FK).
+           
             return ResponseEntity.status(409).body(Map.of(
                     "error", "No se puede eliminar: este platillo ya tiene comandas asociadas. Desactívalo en vez de borrarlo."));
         }
