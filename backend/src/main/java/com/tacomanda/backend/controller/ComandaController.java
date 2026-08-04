@@ -32,7 +32,7 @@ public class ComandaController {
         this.pedidoRepo = pedidoRepo;
     }
 
-    // El mesero manda la comanda desde mesero.html
+    
     @PostMapping
     @Transactional
     public ResponseEntity<?> crear(@Valid @RequestBody ComandaCreateRequest request) {
@@ -71,7 +71,7 @@ public class ComandaController {
         return ResponseEntity.ok(guardada);
     }
 
-    // El cajero pide las comandas abiertas para elegir cuál cobrar
+   
     @GetMapping
     public List<Comanda> listar(@RequestParam(required = false) String estado) {
         if (estado != null) {
@@ -87,7 +87,7 @@ public class ComandaController {
                 .orElse(ResponseEntity.status(404).body(Map.of("error", "No existe esa comanda")));
     }
 
-    // El cajero cobra la comanda: crea el Pedido y la cierra
+    
     @PostMapping("/{id}/cobrar")
     @Transactional
     public ResponseEntity<?> cobrar(@PathVariable Integer id, @Valid @RequestBody CobroRequest request) {
