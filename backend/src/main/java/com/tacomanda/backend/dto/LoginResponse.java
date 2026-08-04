@@ -5,8 +5,8 @@ import com.tacomanda.backend.model.PersonaTacomanda;
 public class LoginResponse {
     private Integer noControl;
     private String nombre;
-    private String rol;       // viene de getCodigoRol() -> polimorfico
-    private String permisos;  // viene de Operable.permisos() -> polimorfico
+    private String rol;      
+    private String permisos;  
 
     public LoginResponse(PersonaTacomanda persona, String permisos) {
         this.noControl = persona.getNoControl();
