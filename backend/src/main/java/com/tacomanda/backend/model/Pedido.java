@@ -21,10 +21,10 @@ public class Pedido {
     private BigDecimal cambio = BigDecimal.ZERO;
 
     @Column(name = "tipo_pago", nullable = false, length = 20)
-    private String tipoPago; // efectivo | tarjeta | transferencia
+    private String tipoPago; 
 
     @Column(name = "tipo_pedido", nullable = false, length = 20)
-    private String tipoPedido; // comer_aqui | para_llevar
+    private String tipoPedido; 
 
     @Column(nullable = false)
     private LocalDateTime fecha = LocalDateTime.now();
