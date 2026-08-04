@@ -3,13 +3,7 @@ package com.tacomanda.backend.model;
 import jakarta.persistence.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-/**
- * Clase abstracta base de todo el personal de Tacomanda.
- * Usa herencia de tabla única de JPA: las 3 subclases (Mesero, Cajero,
- * Administrador) se guardan todas en la tabla "empleados", y la columna
- * "tipo_empleado" funciona como discriminador para saber a qué subclase
- * reconstruir cuando Hibernate lee una fila.
- */
+
 @Entity
 @Table(name = "empleados")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -27,13 +21,13 @@ public abstract class PersonaTacomanda implements Autenticable, Operable {
     private String nombre;
 
     @Column(nullable = false, length = 4)
-    private String pin; // acceso rápido en la terminal de caja (4 dígitos)
+    private String pin; 
 
     @Column(length = 13)
     private String telefono;
 
     @Column(nullable = false, length = 255)
-    private String contrasena; // se guarda hasheada con BCrypt, nunca en texto plano
+    private String contrasena; 
 
     protected PersonaTacomanda() {
         super();
@@ -47,13 +41,12 @@ public abstract class PersonaTacomanda implements Autenticable, Operable {
         this.setContrasena(contrasena);
     }
 
-    // ── Métodos abstractos: cada subclase decide cómo se presenta
-    // y con qué código se identifica ante el frontend (polimorfismo). ──
+    
     public abstract String mostrarRol();
     public abstract String getCodigoRol();
 
     public Integer getNoControl() {
-        return this.noControl; // Integer -> sin formato, tal como pide la rúbrica
+        return this.noControl;
     }
 
     public void setNoControl(Integer noControl) {
@@ -112,22 +105,21 @@ public abstract class PersonaTacomanda implements Autenticable, Operable {
         }
     }
 
-    // No lleva "formato de presentación" a propósito: es un hash, no se muestra al usuario final.
+    
     protected String getContrasena() {
         return this.contrasena;
     }
 
     public void setContrasena(String contrasena) {
         if (contrasena != null && contrasena.length() >= 4) {
-            // Si ya viene hasheado (empieza con $2, BCrypt) lo dejamos tal cual;
-            // si viene en texto plano, lo hasheamos aquí mismo.
+            
             this.contrasena = contrasena.startsWith("$2") ? contrasena : ENCODER.encode(contrasena);
         } else {
             System.out.println("Error: La contraseña debe tener al menos 4 caracteres");
         }
     }
 
-    // Método común reutilizado por las subclases a través de Autenticable.
+    
     protected boolean coincideConHash(String intento) {
         if (intento == null || this.contrasena == null) return false;
         return ENCODER.matches(intento, this.contrasena);
